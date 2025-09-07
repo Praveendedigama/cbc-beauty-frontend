@@ -20,24 +20,37 @@ export const AuthProvider = ({ children }) => {
             const token = localStorage.getItem('token');
             const userData = localStorage.getItem('user');
 
+            console.log('=== TOKEN VALIDATION DEBUG ===');
+            console.log('Token from localStorage:', token ? 'Present' : 'Missing');
+            console.log('User data from localStorage:', userData);
+
             if (token && userData) {
                 try {
+                    const parsedUserData = JSON.parse(userData);
+                    console.log('Parsed user data:', parsedUserData);
+                    console.log('User type:', parsedUserData.type);
+                    
                     // Verify token is still valid by making a test request
                     const response = await productsAPI.getAll();
                     if (response.status === 200) {
-                        setUser(JSON.parse(userData));
+                        setUser(parsedUserData);
+                        console.log('User set from localStorage:', parsedUserData);
                     } else {
                         // Token is invalid, clear storage
                         localStorage.removeItem('token');
                         localStorage.removeItem('user');
                         setUser(null);
+                        console.log('Token invalid, cleared storage');
                     }
                 } catch (error) {
                     // Token is invalid, clear storage
                     localStorage.removeItem('token');
                     localStorage.removeItem('user');
                     setUser(null);
+                    console.log('Token validation error, cleared storage:', error);
                 }
+            } else {
+                console.log('No token or user data found');
             }
             setLoading(false);
         };
@@ -47,15 +60,26 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (credentials) => {
         try {
+            console.log('=== LOGIN DEBUG ===');
+            console.log('Logging in with credentials:', credentials);
+            
             const response = await authAPI.login(credentials);
+            console.log('Login response:', response.data);
+            
             const { token, user: userData } = response.data;
+            console.log('Token received:', token ? 'Present' : 'Missing');
+            console.log('User data received:', userData);
 
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(userData));
             setUser(userData);
+            
+            console.log('User set in context:', userData);
+            console.log('Token stored in localStorage');
 
             return { success: true, data: response.data };
         } catch (error) {
+            console.error('Login error:', error);
             return {
                 success: false,
                 error: error.response?.data?.message || 'Login failed'
@@ -67,10 +91,10 @@ export const AuthProvider = ({ children }) => {
         try {
             console.log('=== REGISTRATION DEBUG ===');
             console.log('Registering user with data:', userData);
-            
+
             const response = await authAPI.register(userData);
             console.log('Registration response:', response.data);
-            
+
             const { token, user: userInfo } = response.data;
             console.log('Token received:', token ? 'Present' : 'Missing');
             console.log('User info received:', userInfo);
