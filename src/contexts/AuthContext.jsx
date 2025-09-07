@@ -66,6 +66,15 @@ export const AuthProvider = ({ children }) => {
     const register = async (userData) => {
         try {
             const response = await authAPI.register(userData);
+            const { token, user: userData } = response.data;
+
+            // Auto-login after successful registration
+            if (token && userData) {
+                localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(userData));
+                setUser(userData);
+            }
+
             return { success: true, data: response.data };
         } catch (error) {
             return {
