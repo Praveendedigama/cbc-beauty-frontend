@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Supabase Test</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+    <h1>Supabase Connection Test</h1>
+    <div id="results"></div>
+
+    <script>
+        const supabaseUrl = 'https://epmnvyjxbutztocgfhud.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVwbW52eWp4YnV0enRvY2dmaHVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcxNjk4OTAsImV4cCI6MjA3Mjc0NTg5MH0.bvIVPPJeFi9PGR9-D1dHFnNZKtNjxJEGPv0rDhjAX0g';
+
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        async function testSupabase() {
+            const results = document.getElementById('results');
+
+            try {
+                // Test 1: List buckets
+                results.innerHTML += '<h3>Testing bucket access...</h3>';
+                const { data: buckets, error: bucketError } = await supabase.storage.listBuckets();
+
+                if (bucketError) {
+                    results.innerHTML += `<p style="color: red;">❌ Bucket error: ${bucketError.message}</p>`;
+                } else {
+                    results.innerHTML += `<p style="color: green;">✅ Buckets found: ${buckets.map(b => b.name).join(', ')}</p>`;
+
+                    // Check if product-images bucket exists
+                    const productBucket = buckets.find(b => b.name === 'product-images');
+                    if (productBucket) {
+                        results.innerHTML += `<p style="color: green;">✅ product-images bucket exists</p>`;
+
+                        // Test 2: List files in bucket
+                        const { data: files, error: listError } = await supabase.storage
+                            .from('product-images')
+                            .list();
+
+                        if (listError) {
+                            results.innerHTML += `<p style="color: red;">❌ List files error: ${listError.message}</p>`;
+                        } else {
+                            results.innerHTML += `<p style="color: green;">✅ Can list files: ${files.length} files found</p>`;
+                        }
+                    } else {
+                        results.innerHTML += `<p style="color: red;">❌ product-images bucket not found</p>`;
+                        results.innerHTML += `<p>Available buckets: ${buckets.map(b => b.name).join(', ')}</p>`;
+                    }
+                }
+
+            } catch (error) {
+                results.innerHTML += `<p style="color: red;">❌ Connection error: ${error.message}</p>`;
+            }
+        }
+
+        testSupabase();
+    </script>
+</body>
+
+</html>

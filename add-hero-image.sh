@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Script to help add hero background image
+echo "🎨 Adding Hero Background Image to Crystal Beauty"
+echo "================================================"
+echo ""
+echo "Please follow these steps:"
+echo ""
+echo "1. 📁 Copy your image file to this directory:"
+echo "   /Users/maneesha/Desktop/CBC WEB APP/CBC-Frontend/public/"
+echo ""
+echo "2. 📝 Rename your image to one of these names:"
+echo "   - beauty-hero-bg.jpg (preferred)"
+echo "   - hero-bg.jpg"
+echo "   - beauty-bg.jpg"
+echo ""
+echo "3. 🔄 Restart your development server:"
+echo "   npm run dev"
+echo ""
+echo "4. 🌐 Refresh your browser to see the new background!"
+echo ""
+echo "📏 Recommended image size: 1920x1080 pixels or larger"
+echo "📦 Supported formats: JPG, PNG, WebP"
+echo ""
+echo "Current public folder contents:"
+ls -la public/
