@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { CheckIcon, ShoppingBagIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { orderService } from '../services/orderService';
+import { getProductImage } from '../utils/imageMapper';
 
 const CheckoutSuccessPage = () => {
     const navigate = useNavigate();
@@ -117,7 +118,7 @@ const CheckoutSuccessPage = () => {
                                         {order.orderedItems?.map((item, index) => (
                                             <div key={index} className="flex items-center space-x-4 p-3 border border-gray-200 rounded-lg">
                                                 <img
-                                                    src={item.image || '/nightcream.jpg'}
+                                                    src={getProductImage({ productName: item.name, images: item.image ? [item.image] : [] })}
                                                     alt={item.name}
                                                     className="w-12 h-12 object-cover rounded-lg"
                                                 />
