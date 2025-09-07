@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
                     const parsedUserData = JSON.parse(userData);
                     console.log('Parsed user data:', parsedUserData);
                     console.log('User type:', parsedUserData.type);
-                    
+
                     // Verify token is still valid by making a test request
                     const response = await productsAPI.getAll();
                     if (response.status === 200) {
@@ -62,10 +62,10 @@ export const AuthProvider = ({ children }) => {
         try {
             console.log('=== LOGIN DEBUG ===');
             console.log('Logging in with credentials:', credentials);
-            
+
             const response = await authAPI.login(credentials);
             console.log('Login response:', response.data);
-            
+
             const { token, user: userData } = response.data;
             console.log('Token received:', token ? 'Present' : 'Missing');
             console.log('User data received:', userData);
@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(userData));
             setUser(userData);
-            
+
             console.log('User set in context:', userData);
             console.log('Token stored in localStorage');
 

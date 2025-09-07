@@ -64,14 +64,9 @@ const LoginPage = () => {
         setLoading(false);
     };
 
-    const handleGoogleLogin = async () => {
-        try {
-            // This would integrate with Google OAuth
-            // For now, we'll show a placeholder
-            setError('Google login not implemented yet');
-        } catch (error) {
-            setError('Google login failed');
-        }
+    const handleGoogleLogin = () => {
+        // Redirect to Google OAuth
+        window.location.href = 'http://localhost:5000/api/auth/google';
     };
 
     return (
