@@ -1,147 +1,192 @@
-# Crystal Beauty Frontend
+# 🌟 CBC Beauty - Frontend
 
-A modern React frontend for the Crystal Beauty e-commerce application.
+A modern, responsive e-commerce frontend for CBC Beauty built with React, Vite, and Tailwind CSS.
 
-## Features
+## ✨ Features
 
-- **User Authentication**: Login, registration, and Google OAuth integration
-- **Product Management**: Browse, search, and filter beauty products
-- **Shopping Cart**: Add/remove items, quantity management
-- **Order Management**: View order history and status
-- **Admin Dashboard**: Manage products and orders
-- **Responsive Design**: Mobile-first design with Tailwind CSS
+- 🛍️ **Product Catalog** - Browse beauty products with high-quality images
+- 🛒 **Shopping Cart** - Add/remove items, quantity management
+- 👤 **User Authentication** - Registration, login, and user profiles
+- 💳 **Payment Integration** - Stripe payment processing
+- 📱 **Responsive Design** - Works perfectly on all devices
+- 🖼️ **Image Upload** - Supabase integration for product images
+- 📦 **Order Management** - Track orders with detailed status updates
+- 👨‍💼 **Admin Dashboard** - Manage products, orders, and users
+- 🔔 **Real-time Notifications** - Toast notifications for user feedback
 
-## Getting Started
+## 🚀 Tech Stack
 
-### Prerequisites
+- **React 18** - Modern React with hooks
+- **Vite** - Fast build tool and dev server
+- **Tailwind CSS** - Utility-first CSS framework
+- **React Router** - Client-side routing
+- **Axios** - HTTP client for API calls
+- **Supabase** - Image storage and management
+- **Stripe** - Payment processing
+- **Heroicons** - Beautiful SVG icons
 
-- Node.js (v16 or higher)
-- npm or yarn
-- Backend API running on port 5000
+## 📦 Installation
 
-### Installation
-
-1. Navigate to the frontend directory:
+1. **Clone the repository**
    ```bash
-   cd CBC-Frontend
+   git clone https://github.com/YOUR_USERNAME/cbc-beauty-frontend.git
+   cd cbc-beauty-frontend
    ```
 
-2. Install dependencies:
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-3. Start the development server:
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Edit `.env` with your values:
+   ```env
+   VITE_BACKEND_URL=http://localhost:5000
+   VITE_STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_key
+   VITE_SUPABASE_URL=https://your-project.supabase.co
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+
+4. **Start development server**
    ```bash
    npm run dev
    ```
 
-4. Open your browser and navigate to `http://localhost:5173`
+5. **Open your browser**
+   Navigate to `http://localhost:5173`
 
-## Project Structure
-
-```
-src/
-├── components/          # Reusable UI components
-│   ├── Header.jsx      # Navigation header
-│   ├── ProductCard.jsx # Product display card
-│   └── AddProductForm.jsx # Admin product form
-├── contexts/           # React contexts for state management
-│   ├── AuthContext.jsx # Authentication state
-│   └── CartContext.jsx # Shopping cart state
-├── pages/              # Main application pages
-│   ├── HomePage.jsx    # Landing page
-│   ├── ProductsPage.jsx # Product listing
-│   ├── ProductDetailPage.jsx # Product details
-│   ├── CartPage.jsx    # Shopping cart
-│   ├── OrdersPage.jsx  # Order history
-│   ├── LoginPage.jsx   # User login
-│   ├── RegisterPage.jsx # User registration
-│   └── AdminPage.jsx   # Admin dashboard
-├── services/           # API services
-│   └── api.js         # Axios configuration and API calls
-└── App.jsx            # Main application component
-```
-
-## API Integration
-
-The frontend communicates with the backend API running on `http://localhost:5000`. The API endpoints include:
-
-- **Authentication**: `/api/users/login`, `/api/users/register`
-- **Products**: `/api/products` (GET, POST, PUT, DELETE)
-- **Orders**: `/api/orders` (GET, POST, PUT)
-
-## Key Features
-
-### Authentication
-- User registration and login
-- JWT token-based authentication
-- Protected routes for authenticated users
-- Admin role-based access control
-
-### Product Management
-- Product listing with search and filters
-- Product detail pages with image galleries
-- Admin product creation and management
-- Real-time stock updates
-
-### Shopping Cart
-- Add/remove products
-- Quantity management
-- Persistent cart storage
-- Real-time total calculations
-
-### Order Management
-- Order creation and tracking
-- Order history for customers
-- Admin order management
-- Status updates and notes
-
-## Technologies Used
-
-- **React 19** - Frontend framework
-- **React Router** - Client-side routing
-- **Tailwind CSS** - Utility-first CSS framework
-- **Axios** - HTTP client for API calls
-- **Heroicons** - Icon library
-- **Vite** - Build tool and development server
-
-## Development
-
-### Available Scripts
+## 🛠️ Available Scripts
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
 
+## 🏗️ Project Structure
+
+```
+src/
+├── components/          # Reusable React components
+│   ├── AddProductForm.jsx
+│   ├── AdminOrderManagement.jsx
+│   ├── CartPage.jsx
+│   ├── Header.jsx
+│   ├── ImageUpload.jsx
+│   └── ...
+├── pages/              # Page components
+│   ├── HomePage.jsx
+│   ├── ProductsPage.jsx
+│   ├── LoginPage.jsx
+│   └── ...
+├── contexts/           # React contexts
+│   ├── AuthContext.jsx
+│   ├── CartContext.jsx
+│   └── ToastContext.jsx
+├── services/           # API services
+│   ├── api.js
+│   ├── orderService.js
+│   └── paymentService.js
+├── utils/              # Utility functions
+│   └── imageMapper.js
+└── config/             # Configuration files
+    └── supabase.js
+```
+
+## 🔧 Configuration
+
 ### Environment Variables
 
-Create a `.env` file in the root directory:
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `VITE_BACKEND_URL` | Backend API URL | Yes |
+| `VITE_STRIPE_PUBLISHABLE_KEY` | Stripe publishable key | Yes |
+| `VITE_SUPABASE_URL` | Supabase project URL | Yes |
+| `VITE_SUPABASE_ANON_KEY` | Supabase anonymous key | Yes |
 
-```
-VITE_API_BASE_URL=http://localhost:5000/api
-```
+### Supabase Setup
 
-## Deployment
+1. Create a Supabase project
+2. Create a storage bucket named `product-images`
+3. Set up Row Level Security policies
+4. Add your Supabase URL and key to environment variables
 
-1. Build the project:
+### Stripe Setup
+
+1. Create a Stripe account
+2. Get your publishable key from the dashboard
+3. Add it to your environment variables
+
+## 🚀 Deployment
+
+### Deploy to Vercel (Recommended)
+
+1. **Connect to Vercel**
+   - Go to [vercel.com](https://vercel.com)
+   - Import your GitHub repository
+   - Vercel will auto-detect Vite configuration
+
+2. **Add Environment Variables**
+   - Add all required environment variables in Vercel dashboard
+   - Use production URLs for backend and Supabase
+
+3. **Deploy**
+   - Vercel will automatically deploy on every push to main branch
+
+### Deploy to Netlify
+
+1. **Build the project**
    ```bash
    npm run build
    ```
 
-2. The `dist` folder contains the production-ready files
+2. **Deploy to Netlify**
+   - Drag and drop the `dist` folder to Netlify
+   - Or connect your GitHub repository
 
-3. Deploy the `dist` folder to your hosting service
+## 🧪 Testing
 
-## Contributing
+```bash
+# Run tests (if configured)
+npm test
+
+# Run linting
+npm run lint
+```
+
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## License
+## 📝 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+If you encounter any issues:
+
+1. Check the [Issues](https://github.com/YOUR_USERNAME/cbc-beauty-frontend/issues) page
+2. Create a new issue with detailed information
+3. Include error messages and steps to reproduce
+
+## 🎯 Roadmap
+
+- [ ] Add product reviews and ratings
+- [ ] Implement wishlist functionality
+- [ ] Add product search and filtering
+- [ ] Implement user profiles
+- [ ] Add order history
+- [ ] Implement email notifications
+- [ ] Add multi-language support
+
+---
+
+**🌟 Built with ❤️ for CBC Beauty**
