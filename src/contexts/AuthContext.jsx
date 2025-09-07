@@ -66,13 +66,13 @@ export const AuthProvider = ({ children }) => {
     const register = async (userData) => {
         try {
             const response = await authAPI.register(userData);
-            const { token, user: userData } = response.data;
+            const { token, user: userInfo } = response.data;
 
             // Auto-login after successful registration
-            if (token && userData) {
+            if (token && userInfo) {
                 localStorage.setItem('token', token);
-                localStorage.setItem('user', JSON.stringify(userData));
-                setUser(userData);
+                localStorage.setItem('user', JSON.stringify(userInfo));
+                setUser(userInfo);
             }
 
             return { success: true, data: response.data };
