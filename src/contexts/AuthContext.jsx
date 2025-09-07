@@ -65,18 +65,29 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (userData) => {
         try {
+            console.log('=== REGISTRATION DEBUG ===');
+            console.log('Registering user with data:', userData);
+            
             const response = await authAPI.register(userData);
+            console.log('Registration response:', response.data);
+            
             const { token, user: userInfo } = response.data;
+            console.log('Token received:', token ? 'Present' : 'Missing');
+            console.log('User info received:', userInfo);
 
             // Auto-login after successful registration
             if (token && userInfo) {
                 localStorage.setItem('token', token);
                 localStorage.setItem('user', JSON.stringify(userInfo));
                 setUser(userInfo);
+                console.log('User auto-logged in successfully');
+            } else {
+                console.log('No token or user info received');
             }
 
             return { success: true, data: response.data };
         } catch (error) {
+            console.error('Registration error:', error);
             return {
                 success: false,
                 error: error.response?.data?.message || 'Registration failed'
