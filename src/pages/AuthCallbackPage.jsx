@@ -14,14 +14,14 @@ const AuthCallbackPage = () => {
         if (token && userParam) {
             try {
                 const userData = JSON.parse(decodeURIComponent(userParam));
-                
+
                 // Store token and user data
                 localStorage.setItem('token', token);
                 localStorage.setItem('user', JSON.stringify(userData));
-                
+
                 // Update auth context
                 setUser(userData);
-                
+
                 // Redirect to home page
                 navigate('/');
             } catch (error) {

@@ -160,6 +160,7 @@ export const AuthProvider = ({ children }) => {
         logout,
         isAdmin,
         isCustomer,
+        setUser, // Add setUser to the context
     };
 
     return (
