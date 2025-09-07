@@ -41,7 +41,7 @@ const OrderStatusNotification = () => {
                 if (previousStatus && previousStatus !== currentStatus) {
                     // Create a unique key for this status change
                     const notificationKey = `${orderId}-${currentStatus}`;
-                    
+
                     // Only show notification if we haven't shown it before
                     if (!shownNotifications.has(notificationKey)) {
                         showStatusChangeNotification(orderId, previousStatus, currentStatus);
@@ -84,13 +84,7 @@ const OrderStatusNotification = () => {
         const message = statusMessages[newStatus] || `Order ${orderId} status updated`;
         const Icon = statusIcons[newStatus] || ClockIcon;
 
-        showToast(
-            <div className="flex items-center space-x-2">
-                <Icon className="h-5 w-5" />
-                <span>{message}</span>
-            </div>,
-            'success'
-        );
+        showToast(message, 'success');
     };
 
     return null; // This component doesn't render anything visible
