@@ -3,6 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { orderService } from '../services/orderService';
 import { useToast } from '../contexts/ToastContext';
 import OrderDetailsModal from '../components/OrderDetailsModal';
+import { getProductImage } from '../utils/imageMapper';
 import {
     ClockIcon,
     CheckCircleIcon,
@@ -369,7 +370,7 @@ const OrdersPage = () => {
                                                 {order.orderedItems.slice(0, 3).map((item, index) => (
                                                     <div key={index} className="flex items-center space-x-3">
                                                         <img
-                                                            src={item.image || '/nightcream.jpg'}
+                                                            src={getProductImage({ productName: item.name, images: item.image ? [item.image] : [] })}
                                                             alt={item.name}
                                                             className="w-12 h-12 object-cover rounded-lg"
                                                         />

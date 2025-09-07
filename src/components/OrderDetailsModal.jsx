@@ -1,5 +1,6 @@
 import React from 'react';
 import { XMarkIcon, TruckIcon, CheckCircleIcon, ClockIcon, XCircleIcon, MapPinIcon, PhoneIcon, CreditCardIcon } from '@heroicons/react/24/outline';
+import { getProductImage } from '../utils/imageMapper';
 
 const OrderDetailsModal = ({ order, isOpen, onClose }) => {
     if (!isOpen || !order) return null;
@@ -61,9 +62,9 @@ const OrderDetailsModal = ({ order, isOpen, onClose }) => {
                     <div className="flex items-center space-x-3">
                         {getStatusIcon(order.status)}
                         <div>
-                            <h2 className="text-2xl font-bold text-gray-900">
-                                Order #{order.orderId}
-                            </h2>
+                        <h2 className="text-2xl font-bold text-gray-900">
+                            Order #{order.orderId}
+                        </h2>
                             <p className="text-sm text-gray-600">
                                 Placed on {formatDate(order.date)}
                             </p>
@@ -81,7 +82,7 @@ const OrderDetailsModal = ({ order, isOpen, onClose }) => {
                     {/* Order Status */}
                     <div className="bg-gray-50 rounded-lg p-4">
                         <div className="flex items-center justify-between">
-                            <div>
+                                    <div>
                                 <h3 className="text-lg font-semibold text-gray-900">Order Status</h3>
                                 <p className="text-sm text-gray-600">Current status of your order</p>
                             </div>
@@ -98,7 +99,7 @@ const OrderDetailsModal = ({ order, isOpen, onClose }) => {
                             {order.orderedItems.map((item, index) => (
                                 <div key={index} className="flex items-center space-x-4 p-4 border border-gray-200 rounded-lg">
                                     <img
-                                        src={item.image || '/nightcream.jpg'}
+                                        src={getProductImage({ productName: item.name, images: item.image ? [item.image] : [] })}
                                         alt={item.name}
                                         className="w-20 h-20 object-cover rounded-lg"
                                     />
