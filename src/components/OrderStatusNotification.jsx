@@ -8,6 +8,7 @@ const OrderStatusNotification = () => {
     const { user } = useAuth();
     const { showToast } = useToast();
     const [lastOrderStatuses, setLastOrderStatuses] = useState({});
+    const [shownNotifications, setShownNotifications] = useState(new Set());
 
     useEffect(() => {
         if (!user) return;
@@ -38,7 +39,22 @@ const OrderStatusNotification = () => {
                 const previousStatus = lastOrderStatuses[orderId];
 
                 if (previousStatus && previousStatus !== currentStatus) {
-                    showStatusChangeNotification(orderId, previousStatus, currentStatus);
+                    // Create a unique key for this status change
+                    const notificationKey = `${orderId}-${currentStatus}`;
+                    
+                    // Only show notification if we haven't shown it before
+                    if (!shownNotifications.has(notificationKey)) {
+                        showStatusChangeNotification(orderId, previousStatus, currentStatus);
+                        setShownNotifications(prev => {
+                            const newSet = new Set([...prev, notificationKey]);
+                            // Keep only the last 50 notifications to prevent memory issues
+                            if (newSet.size > 50) {
+                                const array = Array.from(newSet);
+                                return new Set(array.slice(-50));
+                            }
+                            return newSet;
+                        });
+                    }
                 }
             });
 
