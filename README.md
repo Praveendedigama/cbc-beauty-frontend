@@ -45,7 +45,7 @@ A modern, responsive e-commerce frontend for CBC Beauty built with React, Vite, 
    
    Edit `.env` with your values:
    ```env
-   VITE_BACKEND_URL=http://localhost:5000
+   VITE_BACKEND_URL=https://cbc-beauty-backend.onrender.com
    VITE_STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_key
    VITE_SUPABASE_URL=https://your-project.supabase.co
    VITE_SUPABASE_ANON_KEY=your_supabase_anon_key

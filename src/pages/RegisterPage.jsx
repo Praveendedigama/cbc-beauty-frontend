@@ -80,7 +80,7 @@ const RegisterPage = () => {
 
     const handleGoogleLogin = () => {
         // Redirect to Google OAuth
-        window.location.href = 'http://localhost:5000/api/auth/google';
+        window.location.href = 'https://cbc-beauty-backend.onrender.com/api/auth/google';
     };
 
     return (
