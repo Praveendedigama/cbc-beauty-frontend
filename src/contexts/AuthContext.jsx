@@ -20,10 +20,6 @@ export const AuthProvider = ({ children }) => {
             const token = localStorage.getItem('token');
             const userData = localStorage.getItem('user');
 
-            console.log('=== TOKEN VALIDATION DEBUG ===');
-            console.log('Token from localStorage:', token ? 'Present' : 'Missing');
-            console.log('User data from localStorage:', userData);
-
             if (token && userData) {
                 try {
                     const parsedUserData = JSON.parse(userData);
@@ -54,15 +50,12 @@ export const AuthProvider = ({ children }) => {
             }
             setLoading(false);
         };
-
+        
         validateToken();
     }, []);
 
     const login = async (credentials) => {
         try {
-            console.log('=== LOGIN DEBUG ===');
-            console.log('Logging in with credentials:', credentials);
-
             const response = await authAPI.login(credentials);
             console.log('Login response:', response.data);
 
@@ -89,7 +82,6 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (userData) => {
         try {
-            console.log('=== REGISTRATION DEBUG ===');
             console.log('Registering user with data:', userData);
 
             const response = await authAPI.register(userData);

@@ -10,9 +10,7 @@ export const orderService = {
             // Transform frontend order data to backend format
             const backendOrderData = {
                 orderedItems: orderData.items.map(item => {
-                    console.log('Processing item:', item);
                     const qty = parseInt(item.quantity);
-                    console.log('Parsed quantity:', qty, 'Type:', typeof qty);
                     return {
                         productId: item.productId,
                         qty: qty
