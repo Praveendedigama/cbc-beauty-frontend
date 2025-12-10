@@ -115,13 +115,13 @@ const OrderDetailsModal = ({ order, isOpen, onClose }) => {
                                                 Quantity: {item.quantity}
                                             </span>
                                             <span className="text-sm text-gray-600">
-                                                Price: ${item.price.toFixed(2)}
+                                                Price: Rs.{item.price.toFixed(2)}
                                             </span>
                                         </div>
                                     </div>
                                     <div className="text-right">
                                         <p className="text-lg font-semibold text-gray-900">
-                                            ${(item.price * item.quantity).toFixed(2)}
+                                            Rs.{(item.price * item.quantity).toFixed(2)}
                                         </p>
                                     </div>
                                 </div>
@@ -135,7 +135,7 @@ const OrderDetailsModal = ({ order, isOpen, onClose }) => {
                         <div className="space-y-2">
                             <div className="flex justify-between">
                                 <span className="text-gray-600">Subtotal:</span>
-                                <span className="font-medium">${calculateSubtotal().toFixed(2)}</span>
+                                <span className="font-medium">Rs.{calculateSubtotal().toFixed(2)}</span>
                             </div>
                             <div className="flex justify-between">
                                 <span className="text-gray-600">Shipping:</span>
@@ -143,12 +143,12 @@ const OrderDetailsModal = ({ order, isOpen, onClose }) => {
                             </div>
                             <div className="flex justify-between">
                                 <span className="text-gray-600">Tax:</span>
-                                <span className="font-medium">$0.00</span>
+                                <span className="font-medium">Rs.0.00</span>
                             </div>
                             <div className="border-t border-gray-300 pt-2">
                                 <div className="flex justify-between">
                                     <span className="text-lg font-semibold text-gray-900">Total:</span>
-                                    <span className="text-lg font-semibold text-gray-900">${calculateTotal().toFixed(2)}</span>
+                                    <span className="text-lg font-semibold text-gray-900">Rs.{calculateTotal().toFixed(2)}</span>
                                 </div>
                             </div>
                         </div>

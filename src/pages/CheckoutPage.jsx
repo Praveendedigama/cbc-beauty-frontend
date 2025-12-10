@@ -456,7 +456,7 @@ const CheckoutPage = () => {
                                             <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
                                         </div>
                                         <p className="text-sm font-medium text-gray-900">
-                                            ${(item.price * item.quantity).toFixed(2)}
+                                            Rs.{(item.price * item.quantity).toFixed(2)}
                                         </p>
                                     </div>
                                 ))}
@@ -465,7 +465,7 @@ const CheckoutPage = () => {
                             <div className="mt-6 pt-6 border-t border-gray-200">
                                 <div className="flex justify-between text-lg font-semibold text-gray-900">
                                     <span>Total</span>
-                                    <span>${getCartTotal().toFixed(2)}</span>
+                                    <span>Rs.{getCartTotal().toFixed(2)}</span>
                                 </div>
                             </div>
                         </div>

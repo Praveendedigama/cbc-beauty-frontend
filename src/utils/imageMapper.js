@@ -1,10 +1,5 @@
 // Image mapping utility to replace old images with new beauty product images
 const imageMap = {
-    // Map old placeholder images to new beauty product images
-    '/placeholder-beauty.jpg': '/nightcream.jpg',
-    '/placeholder-product.jpg': '/nightcream.jpg',
-    '/placeholder-beer.jpg': '/nightcream.jpg',
-
     // Map specific product types to appropriate images
     'night': '/nightcream.jpg',
     'cream': '/nightcream.jpg',

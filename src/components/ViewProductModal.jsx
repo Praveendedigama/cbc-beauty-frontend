@@ -82,11 +82,11 @@ const ViewProductModal = ({ product, onClose }) => {
                                 <div className="flex items-center space-x-4 mb-4">
                                     <div className="flex items-center space-x-2">
                                         <span className="text-2xl font-bold text-amber-600">
-                                            ${product.lastPrice.toFixed(2)}
+                                            Rs.{product.lastPrice.toFixed(2)}
                                         </span>
                                         {product.lastPrice < product.price && (
                                             <span className="text-lg text-gray-500 line-through">
-                                                ${product.price.toFixed(2)}
+                                                Rs.{product.price.toFixed(2)}
                                             </span>
                                         )}
                                     </div>

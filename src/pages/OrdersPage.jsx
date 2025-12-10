@@ -355,7 +355,7 @@ const OrdersPage = () => {
                                                 </div>
                                                 <div className="mt-3 sm:mt-0 text-right">
                                                     <p className="text-lg font-semibold text-gray-900">
-                                                        ${order.orderedItems.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}
+                                                        Rs.{order.orderedItems.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}
                                                     </p>
                                                     <p className="text-sm text-gray-600">
                                                         {order.orderedItems.length} item{order.orderedItems.length !== 1 ? 's' : ''}
@@ -379,7 +379,7 @@ const OrdersPage = () => {
                                                                 {item.name}
                                                             </h4>
                                                             <p className="text-xs text-gray-600">
-                                                                Qty: {item.quantity} × ${item.price.toFixed(2)}
+                                                                Qty: {item.quantity} × Rs.{item.price.toFixed(2)}
                                                             </p>
                                                         </div>
                                                     </div>

@@ -50,25 +50,18 @@ export const AuthProvider = ({ children }) => {
             }
             setLoading(false);
         };
-        
+
         validateToken();
     }, []);
 
     const login = async (credentials) => {
         try {
             const response = await authAPI.login(credentials);
-            console.log('Login response:', response.data);
 
             const { token, user: userData } = response.data;
-            console.log('Token received:', token ? 'Present' : 'Missing');
-            console.log('User data received:', userData);
-
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(userData));
             setUser(userData);
-
-            console.log('User set in context:', userData);
-            console.log('Token stored in localStorage');
 
             return { success: true, data: response.data };
         } catch (error) {

@@ -202,7 +202,7 @@ const Footer = () => {
                             </div>
                             <div>
                                 <h5 className="font-semibold text-sm">Free Shipping</h5>
-                                <p className="text-gray-400 text-xs">On orders over $50</p>
+                                <p className="text-gray-400 text-xs">On orders over Rs.50</p>
                             </div>
                         </div>
                         <div className="flex items-center space-x-3">

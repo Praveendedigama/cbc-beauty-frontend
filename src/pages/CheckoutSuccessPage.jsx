@@ -125,10 +125,10 @@ const CheckoutSuccessPage = () => {
                                                 <div className="flex-1">
                                                     <h4 className="text-sm font-medium text-gray-900">{item.name}</h4>
                                                     <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
-                                                    <p className="text-xs text-gray-400">Price: ${item.price}</p>
+                                                    <p className="text-xs text-gray-400">Price: Rs.{item.price}</p>
                                                 </div>
                                                 <p className="text-sm font-medium text-gray-900">
-                                                    ${(item.price * item.quantity).toFixed(2)}
+                                                Rs.{(item.price * item.quantity).toFixed(2)}
                                                 </p>
                                             </div>
                                         ))}
@@ -139,7 +139,7 @@ const CheckoutSuccessPage = () => {
                                 <div className="border-t border-gray-200 pt-4">
                                     <div className="flex justify-between text-lg font-semibold text-gray-900">
                                         <span>Total</span>
-                                        <span>${order.totalAmount?.toFixed(2) || '0.00'}</span>
+                                        <span>Rs.{order.totalAmount?.toFixed(2) || '0.00'}</span>
                                     </div>
                                 </div>
 

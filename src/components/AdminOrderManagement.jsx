@@ -237,7 +237,7 @@ const AdminOrderManagement = () => {
                                             {order.orderedItems?.length || 0} items
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            ${order.totalAmount?.toFixed(2) || '0.00'}
+                                            Rs.{order.totalAmount?.toFixed(2) || '0.00'}
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-${getStatusColor(order.status)}-100 text-${getStatusColor(order.status)}-800`}>

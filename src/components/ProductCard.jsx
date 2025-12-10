@@ -34,11 +34,11 @@ const ProductCard = ({ product }) => {
             className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer"
             onClick={handleCardClick}
         >
-            <div className="relative">
+            <div className="relative aspect-[4/3] overflow-hidden bg-gray-50">
                 <img
                     src={getProductImage(product)}
                     alt={product.productName}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 {discountPercentage > 0 && (
                     <div className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-semibold">
@@ -64,11 +64,11 @@ const ProductCard = ({ product }) => {
                 <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center space-x-2">
                         <span className="text-xl font-bold text-amber-600">
-                            ${product.lastPrice.toFixed(2)}
+                            Rs.{product.lastPrice.toFixed(2)}
                         </span>
                         {product.lastPrice < product.price && (
                             <span className="text-sm text-gray-500 line-through">
-                                ${product.price.toFixed(2)}
+                                Rs.{product.price.toFixed(2)}
                             </span>
                         )}
                     </div>

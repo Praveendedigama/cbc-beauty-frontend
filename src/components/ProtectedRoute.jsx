@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
+//Acts as a security guard for the routes
 const ProtectedRoute = ({ children, requireAdmin = false }) => {
     const { user, loading } = useAuth();
     const location = useLocation();

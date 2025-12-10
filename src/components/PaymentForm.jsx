@@ -203,7 +203,7 @@ const PaymentForm = ({ onSuccess, onCancel, amount }) => {
                     <div className="bg-gray-50 p-4 rounded-lg">
                         <div className="flex justify-between items-center">
                             <span className="text-sm font-medium text-gray-700">Total Amount</span>
-                            <span className="text-lg font-semibold text-gray-900">${amount.toFixed(2)}</span>
+                            <span className="text-lg font-semibold text-gray-900">Rs.{amount.toFixed(2)}</span>
                         </div>
                     </div>
 

@@ -72,6 +72,7 @@ const AdminPage = () => {
         }
     };
 
+
     const handleAddProduct = async (productData) => {
         try {
             console.log('Adding product with data:', productData);
@@ -231,7 +232,7 @@ const AdminPage = () => {
                             <div className="ml-4">
                                 <p className="text-sm font-medium text-gray-600">Revenue</p>
                                 <p className="text-2xl font-semibold text-gray-900">
-                                    ${orders.reduce((sum, order) =>
+                                    Rs.{orders.reduce((sum, order) =>
                                         sum + order.orderedItems.reduce((orderSum, item) =>
                                             orderSum + (item.price * item.quantity), 0), 0
                                     ).toFixed(2)}
@@ -361,11 +362,11 @@ const AdminPage = () => {
                                                             <div className="flex items-center space-x-4">
                                                                 <div className="text-right">
                                                                     <div className="text-sm font-medium text-gray-900">
-                                                                        ${product.lastPrice.toFixed(2)}
+                                                                        Rs.{product.lastPrice.toFixed(2)}
                                                                     </div>
                                                                     {product.lastPrice < product.price && (
                                                                         <div className="text-sm text-gray-500 line-through">
-                                                                            ${product.price.toFixed(2)}
+                                                                            Rs.{product.price.toFixed(2)}
                                                                         </div>
                                                                     )}
                                                                 </div>
